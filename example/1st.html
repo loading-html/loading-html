@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoadingHtml 示例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <div><button id="load_more">加载新的</button></div>
+    <div id="content"></div>
+    <script id="loading_html" src="../release/loading-html.min.js"></script>
+    <!-- // <script id="loading_html" src="../src/loading-html.js"></script> -->
+    <script>
+        // 加载显示
+        var load_mask=LoadingHtml.init();
+        $(function(){
+            console.log('测试 jQuery.');
+            $('#load_more').click(function(){
+                $.ajax({
+                    url:'./loading.php',
+                    type:'get',
+                    beforeSend: function(){
+                        load_mask2=LoadingHtml.init({
+                            config:{loading_time:10000}
+                        });
+                    },
+                    complete: function(){
+                        LoadingHtml.hide(load_mask2);
+                    },
+                    success:function(back){
+                        var back=JSON.parse(back);
+                        var status=back.status;
+                        var info=back.info;
+                        var data=back.data;
+                        if(status){
+                            $("#content").html(data);
+                        }
+                        console.log(info);
+                    },
+                    error:function(){
+                        console.log('网络不稳定，请稍后重试');
+                    },
+
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

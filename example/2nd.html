@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoadingHtml 示例二</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <p><button id="load_more_1">加载-更改加载时间</button></p>
+    <p><button id="load_more_2">加载-更改加载背景</button></p>
+    <p><button id="load_more_3">加载-更改加载图标</button></p>
+    <script id="loading_html" src="../release/loading-html.min.js"></script>
+    <!-- <script id="loading_html" src="../src/loading-html.js"></script> -->
+    <script>
+        // 加载显示，更改样式
+        // 特别注意 当 text-align 这样两个单词组合的属性时，需要 引号引住、即 'text-align'
+        var load_mask=LoadingHtml.init({
+            loading_mask_style:{
+                background:'#9cf',
+            },
+            loading_img_style:{
+                img_src:'./loading.gif',
+                width:'64px',
+            }
+        });
+        $(function(){
+            // console.log('测试 jQuery.');
+            // 加载-更改加载时间
+            $('#load_more_1').click(function(){
+                var load_mask1=LoadingHtml.init({
+                    config:{
+                        loading_time:3000,
+                    },
+                });
+            });
+            // 加载-更改背景
+            $('#load_more_2').click(function(){
+                // 更改蒙版样式-loading_mask_style
+                // 对象的参数与 蒙版的 CSS 样式 一致
+                var load_mask2=LoadingHtml.init({
+                    loading_mask_style:{
+                        background:'#6cf',
+                    },
+                });
+            });
+            // 加载-更改加载图标
+            $('#load_more_3').click(function(){
+                // 更改加载图标样式-loading_img_style
+                // 对象的参数与 加载 img 的 CSS 样式 一致
+                // 图标 src 键为 img_src
+                var load_mask3=LoadingHtml.init({
+                    loading_img_style:{
+                        img_src:'./loading.gif',
+                        width:'64px',
+                    },
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

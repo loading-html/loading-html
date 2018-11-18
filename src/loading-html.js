@@ -91,6 +91,8 @@
         loading_html.name=loading_html_class;
         // 把加载层图片添加到加载蒙版中
         loading_html.appendChild(loading_img);
+        // 设置显示时间
+        loading_html.dataset.loading_time=loading_time?loading_time:1000;
         // 把蒙版添加到 body 中 第一个 script 之前
         document.body.insertBefore(loading_html,document.body.getElementsByTagName("script")[0]);
         // 启动加载层
@@ -104,8 +106,16 @@
                 loading_html.style.display='block';
             }
         }
-        loading_html.show=function(){
+        loading_html.show=function(loading_time){
+            var that=this;
+            // 设置默认时间
+            var this_loading_time=parseInt(this.dataset.loading_time);
+            loading_time=parseInt(loading_time)?parseInt(loading_time):this_loading_time;
+            // 开启
             this.style.display="block";
+            setTimeout(function(){
+                that.style.display="none";
+            },loading_time);
         }
         loading_html.hide=function(){
             this.style.display="none";
@@ -125,9 +135,9 @@
         }
     }
     // 显示 需要一个参数
-    LoadingHtml.show=function(load_mask){
+    LoadingHtml.show=function(load_mask,loading_time){
         if(typeof(load_mask)=='object'){
-            load_mask.style.display="block";
+            load_mask.show(loading_time);
         }else{
             console.log('LoadingHtml 需要一个参数');
         }

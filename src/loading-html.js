@@ -32,6 +32,7 @@
             background:'#CCC',
             opacity:0.6,
             display:'block',
+            'z-index':1,
         }
         // 初始化 加载图片 样式 对象
         this.loading_img_style={

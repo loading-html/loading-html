@@ -15,44 +15,57 @@
     LoadingHtml = new Object();
     var loading_html_class='loading_html';
     var loading_img_class='loading_img';
-    // 加载蒙版 样式 对象
-    LoadingHtml.loading_mask_style={
-        position:'fixed',
-        left:0,
-        top:0,
-        width:'100%',
-        height:'100%',
-        'text-align':'center',
-        background:'#CCC',
-        opacity:0.6,
-        display:'none',
-    }
-    // 加载图片 样式 对象
+    // 获取资源地址
     var host = document.scripts;
     var img_src_path=host[host.length-1].src.substring(0,host[host.length-1].src.lastIndexOf("/")+1)+'img/loading.gif';
-    LoadingHtml.loading_img_style={
-        img_src:img_src_path,
-        'margin-top':'10rem',
-        width:'32px',
-        height:'auto',
-    }
+    
     // init 初始化 关于加载层本身的配置参数：loading_time 加载图片显示时间|type 加载层类型、loading_mask_style 蒙版层样式、loading_img_style 加载图片样式
     LoadingHtml.init=function(loading){
+        // 初始化 加载蒙版 样式 对象
+        this.loading_mask_style={
+            position:'fixed',
+            left:0,
+            top:0,
+            width:'100%',
+            height:'100%',
+            'text-align':'center',
+            background:'#CCC',
+            opacity:0.6,
+            display:'block',
+        }
+        // 初始化 加载图片 样式 对象
+        this.loading_img_style={
+            img_src:img_src_path,
+            'margin-top':'10rem',
+            width:'32px',
+            height:'auto',
+        };
         var loading=typeof(loading)!='undefined'?loading:{};
         loading.config=typeof(loading.config)!='undefined'?loading.config:{};
         // 加载时间
         if(typeof(loading.config.loading_time)=='undefined'){
             loading.config.loading_time=0;
         }
+        var loading_time=parseInt(loading.config.loading_time);
         var loading_mask_style=loading.loading_mask_style;
         var loading_img_style=loading.loading_img_style;
+        // 更新 this.loading_mask_style
         if(loading_mask_style){
             for(var key in loading_mask_style){
                 this.loading_mask_style[key]=loading_mask_style[key];
             }
         }
+        // 更新 this.loading_img_style
+        if(loading_img_style){
+            for(var key in loading_img_style){
+                this.loading_img_style[key]=loading_img_style[key];
+            }
+        }
         var body_dom=document.getElementsByTagName('body')[0];
         var loading_id=body_dom.dataset.loading_id?parseInt(body_dom.dataset.loading_id)+1:1;
+        if(loading_id>1 && loading_time==0){
+            loading_time=1000;
+        }
         body_dom.dataset.loading_id=loading_id;
         loading_id='loading_html_'+loading_id;
         // 创建加载层
@@ -80,13 +93,13 @@
         loading_html.appendChild(loading_img);
         // 把蒙版添加到 body 中 第一个 script 之前
         document.body.insertBefore(loading_html,document.body.getElementsByTagName("script")[0]);
-        var loading_time=parseInt(loading.config.loading_time);
+        // 启动加载层
         if(loading_time>0){
-                loading_html.style.display='block';
-                setTimeout(function(){
-                    loading_html.style.display='none';
-                },loading_time);
+            setTimeout(function(){
+                loading_html.remove();
+            },loading_time);
         }else{
+            loading_html.style.display='none';
             window.onbeforeunload=function(){
                 loading_html.style.display='block';
             }

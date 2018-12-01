@@ -1,9 +1,9 @@
 # loading-html
 - 定义：HTML 页面加载遮罩层
-- 特性：，简单易用、且灵活多变
+- 特性：简单易用、且灵活多变
 - 官网：
     1. [Gitee 码云](https://loading-html.gitee.io "loading-html 官网")
-    2. [GitHub](https://loading-html.github.io/ "loading-html 教程官网")
+    2. [GitHub](https://loading-html.github.io/ "loading-html 教程")
 
 ## 1、下载安装
 1. 下载地址 GitHub [loading-html](https://github.com/loading-html/loading-html "loading-html")
@@ -25,9 +25,9 @@
 ```
 
 ## 2、实例指引
-1. 示例 1 (./example/1st.html "loading-html 示例 1")
-2. 示例 2 (./example/2nd.html "loading-html 示例 2")
-3. 示例 3 (./example/3rd.html "loading-html 示例 3")
+1. [loading-html 示例 1](./example/1st.html "loading-html 示例 1")
+2. [loading-html 示例 2](./example/2nd.html "loading-html 示例 2")
+3. [loading-html 示例 3](./example/3rd.html "loading-html 示例 3")
 
 ## 3、API 介绍
 1. 初始化 LoadingHtml ` LoadingHtml.init(); `
@@ -56,3 +56,17 @@ LoadingHtml.hide(loading_mask);
 
 ## 4、交流提供
 1. loading-html  QQ 交流群：632813309
+
+<div>
+    <img src="./img/qq_qrcode.jpg" title="loading-html QQ 交流群" alt="loading-html QQ 交流群" width=200 style="margin-left:30px" />
+</div>
+
+2. loading-html 反馈电子邮件 [![给我写信](./img/e-mail.png)](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=zvz7_Pb-_vj6_feOv7-graGj "给我写信")
+
+## 关于作者
+- 个人主页 [琴诗酒剑](http://www.zhangjianying.cn "琴诗酒剑伊为伴")
+- 如果觉着不错，就打个赏吧
+<div>
+    <img src="./img/qq_wallet.png" title="QQ 打赏" alt="QQ 打赏" style="border:1px solid #CCC" />
+    <img src="./img/alipay_wallet.png" title="支付宝打赏" alt="支付宝打赏" style="border:1px solid #CCC" />
+</div>

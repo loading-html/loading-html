@@ -1,7 +1,7 @@
 # loading-html
 - 定义：HTML 页面加载遮罩层
 - 特性：简单易用、且灵活多变
-- 官网：
+- 主页：
     1. [Gitee 码云](https://loading-html.gitee.io "loading-html 官网")
     2. [GitHub](https://loading-html.github.io/ "loading-html 教程")
 

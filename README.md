@@ -54,7 +54,7 @@ LoadingHtml.show(loading_mask,1000);
 LoadingHtml.hide(loading_mask);
 ```
 
-## 4、交流提供
+## 4、交流提问
 1. loading-html  QQ 交流群：632813309
 
 <div>

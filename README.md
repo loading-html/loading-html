@@ -7,15 +7,18 @@
 
 ## 1、下载安装
 1. 下载地址 GitHub [loading-html](https://github.com/loading-html/loading-html "loading-html")
+- npm 安装 ` $ npm install loading-html `
+- CDN 引入 ` <script src="https://unpkg.com/loading-html/release/loading-html.min.js"></script> `
+
 2. 目录结构
-   - sec 源码目录
+   - src 源码目录
    - release 压缩后的源码
    - example 示例目录
    - LICENSE 开源协议
    - README.md 项目文档
 ## 2、基本使用步骤
 1. body 标签中引入 loading-html  
-` <script id="loading_html" src="./loading-html.js"></script> `
+` <script id="loading_html" src="./release/loading-html.min.js"></script> `
 2. 初始化 LoadingHtml 完成
 ```
 <script>
